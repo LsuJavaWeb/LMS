@@ -35,7 +35,7 @@
 	<div class="container" style="height: 280px;width: 290px;border: 1px solid #C0C0C0;padding-top:35px;margin-top:100px">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <form role="form" action="<%=basePath%>login.action" method="post" name="reg"
+            <form role="form" action="<%=basePath%>check.action" method="post" name="reg"
         onsubmit="return check()">
                 <div class="form-group">
                      <label for="Name">用户名:</label>

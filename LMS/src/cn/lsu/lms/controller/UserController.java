@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.lsu.lms.bean.User;
 import cn.lsu.lms.mapper.UserMapper;
@@ -18,12 +19,47 @@ public class UserController {
 	
 	
 	@RequestMapping("/userinsert")
-	public String  insert(User user)
+	public ModelAndView  insert(User user)
 	{
+		ModelAndView m=new ModelAndView();
+		int res=userService.insert(user);
 		
-		userService.Insert(user);
-		return "login";
+			m.addObject("status", res);
+			m.setViewName("regist");
 		
+		return m;
+		
+	}
+	
+	@RequestMapping("/userdelete")
+	public ModelAndView delete(int userId)
+	{
+		ModelAndView m=new ModelAndView();
+		boolean res=userService.delete(userId);
+		m.addObject("status", res);
+		m.setViewName("");
+		return m;
+		
+	}
+	
+	@RequestMapping("/userquery")
+	public ModelAndView query(User user)
+	{
+		ModelAndView m=new ModelAndView();
+		ArrayList<User> ulist=userService.query(user);
+		m.addObject("result", ulist);
+		m.setViewName("");
+		return m;
+	}
+	
+	@RequestMapping("/usermodify")
+	public ModelAndView modify(User user)
+	{
+		ModelAndView m=new ModelAndView();
+		int res=userService.modify(user);
+		m.addObject("status", res);
+		m.setViewName("");
+		return m;
 	}
 	
 	@RequestMapping("/login")
@@ -40,7 +76,7 @@ public class UserController {
 		return "regist";
 	}
 	
-	@RequestMapping("/logincheck")
+	@RequestMapping("/check")
 	public String logincheck(User user)
 	{
 		//0表示正常登陆，1表示账户不存在，2表示密码错误
