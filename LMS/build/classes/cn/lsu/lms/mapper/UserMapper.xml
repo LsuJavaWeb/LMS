@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lsu.lms.mapper.UserMapper">
+
+	<insert id="insert" parameterType="User">
+		insert into user
+		(name,isAdmin,email,isInBlack,phone,password)values(#{name},0,#{email},0,#{phone},#{password})
+	</insert>
+
+	<select id="query" parameterType="User" resultType="cn.lsu.lms.bean.User">
+		select * from user where name=#{name}
+	</select>
+	<delete id="delete" parameterType="int">
+		delete from user where userId=#{id}
+	</delete>
+
+	<update id="modify" parameterType="User">
+		update user set
+		name=#{name},isAdmin=#{isAdmin},email=#{email},isInBlack=#{isInBlack},phone=#{phone},password=#{password}
+		where userId=#{userId}
+	</update>
+</mapper>
