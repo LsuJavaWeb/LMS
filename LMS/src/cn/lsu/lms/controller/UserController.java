@@ -1,0 +1,75 @@
+package cn.lsu.lms.controller;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.lsu.lms.bean.User;
+import cn.lsu.lms.mapper.UserMapper;
+import cn.lsu.lms.service.UserService;
+
+@Controller
+public class UserController {
+	@Autowired
+	private UserService userService;
+	
+	
+	@RequestMapping("/userinsert")
+	public String  insert(User user)
+	{
+		
+		userService.Insert(user);
+		return "login";
+		
+	}
+	
+	@RequestMapping("/login")
+	public String viewlogin()
+	{
+		
+		return "login";
+	}
+	
+	@RequestMapping("/regist")
+	public String viewreg()
+	{
+		
+		return "regist";
+	}
+	
+	@RequestMapping("/logincheck")
+	public String logincheck(User user)
+	{
+		//0表示正常登陆，1表示账户不存在，2表示密码错误
+		ArrayList<User>users=userService.query(user);
+		if(users.size()==0)
+		{
+			//用户不存在
+			System.out.println("用户不存在");
+			return "login";
+		}
+		else
+		{
+			if(users.get(0).getPassword().equals(user.getPassword()))
+			{
+				//正常登陆
+				System.out.println("正常登陆");
+				return "index";
+			}
+			else
+			{
+				//密码错误
+				System.out.println("密码错误");
+				return "login";
+			}
+			
+		}
+		
+		
+		
+	}
+
+}
