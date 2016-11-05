@@ -7,8 +7,8 @@
 			+ path + "/";
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <script type="text/javascript">
 	function check() {
 		var uname = document.getElementById("name");
@@ -26,32 +26,47 @@
 	}
 </script>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="。。/../css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登陆</title>
 </head>
 <body>
-	<form action="<%=basePath%>userinsert.action" method="post" name="reg"
-		onsubmit="return check()">
-		<table>
-			<tr>
-				<td>用户名:</td>
-				<td><input type="text" name="name" id="name" /></td>
-			</tr>
-			<tr>
-				<td>密码:</td>
-				<td><input type="password" name="password" id="password" /></td>
-			</tr>
-			<tr>
-				<td>邮箱地址:</td>
-				<td><input type="email" name="email" id="email" /></td>
-			</tr>
-			<tr>
-				<td>手机号:</td>
-				<td><input type="text" name="phone" id="phone" /></td>
-			</tr>
-			<td><input type="submit" value="提交" /></td>
-		</table>
-	</form>
+	<div class="container" style="height: 400px;width: 290px;border: 1px solid #C0C0C0;padding-top:35px;margin-top:100px"">
+    <div class="row clearfix">
+        <div class="col-md-12 column" >
+            <form role="form" action="<%=basePath%>userinsert.action" method="post" name="reg"
+        onsubmit="return check()">
+                <div class="form-group">
+                     <label for="Name">用户名:</label>
+                     <input class="form-control" type="text" name="name" id="name" />
+                </div>
+                <div class="form-group">
+                     <label for="Password">密码:</label>
+                     <input class="form-control" type="password" name="password" id="password" />
+                </div>
+                <div class="form-group">
+                     <label for="Email">邮箱:</label>
+                     <input class="form-control" type="email" name="email" id="email" />
+                </div>
+                <div class="form-group">
+                     <label for="Phone">手机号:</label>
+                     <input class="form-control" type="text" name="phone" id="phone" />
+                </div>
+				<div class="pager">
+	               <button type="submit" class="btn btn-default">提交</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
 
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
