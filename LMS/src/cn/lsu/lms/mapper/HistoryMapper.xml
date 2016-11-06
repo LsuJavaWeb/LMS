@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lsu.lms.mapper.HistoryMapper" >
+
+	<insert id="insert" parameterType="HistoryBook">
+		insert into historyBook (bookId,userId,borrowTime,returnTime,historyId)values(#{bookId},#{userId},#{borrowTime},#{returnTime},#{historyId})
+	</insert>
+ 	
+ 	<select id="query" resultType="cn.lsu.lms.bean.HistoryBook">
+ 		select * from historyBook
+ 	</select>
+ 	
+ 	<update id = "modify" parameterType="HistoryBook">
+ 		update historyBook set bookId = #{bookId},userId =#{userId},borrowTime=#{borrowTime},returnTime =#{returnTime} where historyId = #{historyId}
+ 	</update>
+
+	<delete id = "delete" parameterType="int">
+		delete from historyBook where historyId=#{historyId}
+	</delete>
+</mapper>
