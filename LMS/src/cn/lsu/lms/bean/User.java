@@ -10,10 +10,8 @@ public class User {
 	private String phone;
 	private String password;
 	
-/*	public User(){
-		
-	}
 	
+/*	
 	public User(int userId, int isAdmin, String name, String email, int isInBlack, String phone, String password) {
 		super();
 		this.userId = userId;
